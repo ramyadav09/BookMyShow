@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/schema/config.json",
+  "name": "UniversalZeroTrustProject",
+  "description": "Stack-agnostic zero-trust multi-agent project workspace",
+  "instructions": {
+    "file": "../../AGENTS.md"
+  },
+  "context": [
+    ".agents/guardrails.md",
+    ".agents/response-style.md"
+  ],
+  "rules": {
+    "zero_trust": true,
+    "require_plan_approval": true,
+    "git_mutation_lock": true,
+    "deletion_lock": true,
+    "commit_convention": "conventional"
+  }
+}

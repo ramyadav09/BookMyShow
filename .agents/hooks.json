@@ -1,0 +1,146 @@
+{
+  "block-git-and-gh": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\block-git-and-gh.ps1",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "block-destructive-ops": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\block-destructive-ops.ps1",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "block-network": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\block-network.ps1",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "block-secrets-access": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\block-secrets-access.ps1",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "block-secrets-file-write": {
+    "PreToolUse": [
+      {
+        "matcher": "write_file|edit_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\block-secrets-file-write.ps1",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "scan-secrets": {
+    "PreToolUse": [
+      {
+        "matcher": "write_file|edit_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\scan-secrets.ps1",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "block-outside-project": {
+    "PreToolUse": [
+      {
+        "matcher": "write_file|edit_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\block-outside-project.ps1",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "block-all-commands": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\block-all-commands.ps1",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "audit-logger": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\audit-logger.ps1",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "session-guardrail-reminder": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\session-reminder.ps1",
+        "timeout": 10
+      }
+    ]
+  },
+  "pre-invocation-reminder": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks\\pre-invocation-reminder.ps1",
+        "timeout": 10
+      }
+    ]
+  }
+}

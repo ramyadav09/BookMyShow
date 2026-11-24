@@ -1,0 +1,21 @@
+---
+alwaysApply: true
+---
+
+# Universal Project — Cursor Rules
+
+## ⚠️ ZERO-TRUST SECURITY DIRECTIVE (OVERRIDES AUTO-ACCEPT / YOLO)
+
+Regardless of auto-apply or agent mode, **NO action, file generation, or command execution may proceed without explicit user consent.** Always present a full plan and await "OK" or "Go".
+
+## Required References
+1. `AGENTS.md` — Project standards, chosen tech stack, and conventions
+2. `.agents/guardrails.md` — Hard security locks and hooks
+3. `.agents/response-style.md` — Output format and conventions
+
+## Inviolable Rules
+- Zero mutating `git` or `gh` commands (hard-blocked). Read-only git allowed.
+- Zero file deletions (`rm`, `del`) and zero DB deletions (`DELETE`, `DROP`).
+- Outbound network calls (`curl`, `wget`, `ssh`) are forbidden without a timed lease.
+- Secrets (`.env`, keys) must never be read or written directly.
+- Strict type safety and modular design in whatever language is configured in `AGENTS.md`.
